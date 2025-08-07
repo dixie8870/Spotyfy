@@ -1,38 +1,221 @@
+/* Spotify Clone Styles */
 .App {
-    text-align: center;
+  font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
 }
 
-.App-link {
-    color: #61dafb;
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Hover effects for cards */
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Play button hover effect */
+.play-button {
+  transition: all 0.2s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
+}
+
+/* Progress bar styling */
+.progress-bar {
+  position: relative;
+}
+
+.progress-bar:hover .progress-handle {
+  opacity: 1;
+}
+
+.progress-handle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Custom focus styles */
+button:focus,
+input:focus {
+  outline: 2px solid #1DB954;
+  outline-offset: 2px;
+}
+
+/* Image loading animation */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img[src=""] {
+  opacity: 0;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .grid-cols-6 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Custom button styles */
+.spotify-button {
+  background: #1DB954;
+  color: white;
+  border: none;
+  border-radius: 500px;
+  padding: 12px 32px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.spotify-button:hover {
+  background: #1ed760;
+  transform: scale(1.04);
+}
+
+.spotify-button:active {
+  transform: scale(0.96);
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Dark theme specific styles */
+.dark-theme {
+  background: #121212;
+  color: #ffffff;
+}
+
+/* Glassmorphism effect for some elements */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom typography */
+.text-spotify-green {
+  color: #1DB954;
+}
+
+.bg-spotify-green {
+  background-color: #1DB954;
+}
+
+.border-spotify-green {
+  border-color: #1DB954;
+}
+
+/* Enhanced hover states */
+.interactive-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.interactive-card:hover {
+  background-color: #282828;
+  transform: translateY(-2px);
+}
+
+/* Volume slider custom styling */
+.volume-slider {
+  appearance: none;
+  background: #535353;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #1DB954;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #1DB954;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
 }
